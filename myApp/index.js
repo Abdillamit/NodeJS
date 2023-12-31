@@ -5,7 +5,9 @@ const server = http.createServer((require, response) => {
   //response - Менен срооуго жооп алабыз ! 
   console.log(require.url);
 
-  response.write('<h1>Hello My Server !</h1>')
+  response.write('<h1>Hello My Server!</h1>')
+  response.write('<h1>Hello World!</h1>')
+  response.write('<h1>Hello Abdillamit!</h1>')
   response.end()
 })
 
