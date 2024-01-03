@@ -1,0 +1,20 @@
+No lines are selected.
+node_modules/
+.cache
+public
+
+.env.development
+
+.DS_Store
+
+.vscode/
+
+.idea
+coverage
+
+!*.d.ts
+steps.d.ts
+*.d.ts
+
+integration-tests/output/
+integration-tests/*.js
