@@ -1,14 +1,28 @@
 const http = require('http');
 
-const server = http.createServer((require, response) => {
-  //require - Менен срооу жонотобуз ! 
-  //response - Менен срооуго жооп алабыз ! 
-  console.log(require.url);
+const server = http.createServer((req, res) => {
+  if (req.method === "GET") {
+    res.writeHead(200, { "Content-type": "text/html" })
+    res.end(`
+      <h2>Send Name</h2>
+      <form method="post" action="/">
+        <input name="name"  placeholder="Enter your name" />
+        <button type="submit">Send name</button>
+      </form>
+    `)
+  } else if (req.method === "POST") {
+    const body = []
+    res.writeHead(200, { "Content-type": "text/html; charset=utf-8" })
 
-  response.write('<h1>Hello My Server!</h1>')
-  response.write('<h1>Hello World!</h1>')
-  response.write('<h1>Hello Abdillamit!</h1>')
-  response.end()
+    req.on('data', date => {
+      body.push(Buffer.from(date))
+    })
+
+    req.on('end', () => {
+      const massage = body.toString().split('=')[1]
+      res.end(`Name  ${massage}`)
+    })
+  }
 })
 
 
